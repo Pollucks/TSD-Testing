@@ -1,14 +1,14 @@
 class CharactersController < ApplicationController
-    $race = "temp"
-    $classes = "temp"
-    $strength = 1           #0
-    $dexterity = 2          #1
-    $constitution = 3       #2
-    $intelligence = 4       #3
-    $wisdom = 5             #4
-    $charisma = 0           #5
-    $armorclass = "temp"
-    $gold = 0
+    @@race = "temp"
+    @@classes = "temp"
+    @@strength = 1           #0
+    @@dexterity = 2          #1
+    @@constitution = 3       #2
+    @@intelligence = 4       #3
+    @@wisdom = 5             #4
+    @@charisma = 0           #5
+    @@armorclass = "temp"
+    @@gold = 0
     
     def index
         @characters = Character.all
@@ -24,25 +24,25 @@ class CharactersController < ApplicationController
     
     def create
         @character = Character.new(character_params)
-        $strength = self.characterStats
-        $dexterity = self.characterStats
-        $constitution = self.characterStats
-        $intelligence = self.characterStats
-        $wisdom = self.characterStats
-        $charisma = self.characterStats
+        @@strength = self.characterStats
+        @@dexterity = self.characterStats
+        @@constitution = self.characterStats
+        @@intelligence = self.characterStats
+        @@wisdom = self.characterStats
+        @@charisma = self.characterStats
         self.raceGeneration
         self.classGeneration
         
-        @character.race = $race
-        @character.classes = $classes
-        @character.strength = $strength
-        @character.dexterity = $dexterity
-        @character.constitution = $constitution
-        @character.intelligence = $intelligence
-        @character.wisdom = $wisdom
-        @character.charisma = $charisma
-        @character.armorclass = $armorClass
-        @character.gold = $gold
+        @character.race = @@race
+        @character.classes = @@classes
+        @character.strength = @@strength
+        @character.dexterity = @@dexterity
+        @character.constitution = @@constitution
+        @character.intelligence = @@intelligence
+        @character.wisdom = @@wisdom
+        @character.charisma = @@charisma
+        @character.armorclass = @@armorClass
+        @character.gold = @@gold
         
         if @character.save
             redirect_to @character
@@ -86,270 +86,270 @@ public
     def barbarians                          #0
         @armorType = rand(0..2)
         if @armorType == 0
-            $armorClass = "Light Armor"
+            @@armorClass = "Light Armor"
         elsif @armorType == 1
-            $armorClass = "Medium Armor"
+            @@armorClass = "Medium Armor"
         end
         
         (0...2).each do |i|
             @diceRoll = rand(1..4)
-            $gold = $gold + @diceRoll
+            @@gold = @@gold + @diceRoll
         end
-        $gold = $gold * 10
+        @@gold = @@gold * 10
     end
     
     def bards                               #1
-        $armorClass = "Light Armor"
+        @@armorClass = "Light Armor"
         
         (0...5).each do |i|
             @diceRoll = rand(1..4)
-            $gold = $gold + @diceRoll
+            @@gold = @@gold + @diceRoll
         end
-        $gold = $gold * 10
+        @@gold = @@gold * 10
     end
     
     def clerics                             #2
     @armorType = rand(0..2)
         if @armorType == 0
-            $armorClass = "Light Armor"
+            @@armorClass = "Light Armor"
         elsif @armorType == 1
-            $armorClass = "Medium Armor"
+            @@armorClass = "Medium Armor"
         end
         
         (0...5).each do |i|
             @diceRoll = rand(1..4)
-            $gold = $gold + @diceRoll
+            @@gold = @@gold + @diceRoll
         end
-        $gold = $gold * 10
+        @@gold = @@gold * 10
     end
     
     def druids                              #3
         @armorType = rand(0..2)
         if @armorType == 0
-            $armorClass = "Light Armor"
+            @@armorClass = "Light Armor"
         elsif @armorType == 1
-            $armorClass = "Medium Armor"
+            @@armorClass = "Medium Armor"
         end
         
         (0...2).each do |i|
             @diceRoll = rand(1..4)
-            $gold = $gold + @diceRoll
+            @@gold = @@gold + @diceRoll
         end
-        $gold = $gold * 10
+        @@gold = @@gold * 10
     end
     
     def fighters                            #4
         @armorType = rand(0..3)
         if @armorType == 0
-            $armorClass = "Light Armor"
+            @@armorClass = "Light Armor"
         elsif @armorType == 1
-            $armorClass = "Medium Armor"
+            @@armorClass = "Medium Armor"
         elsif @armorType == 2
-            $armorClass = "Heavy Armor"
+            @@armorClass = "Heavy Armor"
         end
         
         (0...5).each do |i|
             @diceRoll = rand(1..4)
-            $gold = $gold + @diceRoll
+            @@gold = @@gold + @diceRoll
         end
-        $gold = $gold * 10
+        @@gold = @@gold * 10
     end
     
     def monks                               #5
-        $armorClass = "No Armor"
+        @@armorClass = "No Armor"
         
         (0...5).each do |i|
             @diceRoll = rand(1..4)
-            $gold = $gold + @diceRoll
+            @@gold = @@gold + @diceRoll
         end
     end
     
     def paladins                            #6
         @armorType = rand(0..3)
         if @armorType == 0
-            $armorClass = "Light Armor"
+            @@armorClass = "Light Armor"
         elsif @armorType == 1
-            $armorClass = "Medium Armor"
+            @@armorClass = "Medium Armor"
         elsif @armorType == 2
-            $armorClass = "Heavy Armor"
+            @@armorClass = "Heavy Armor"
         end
         
         (0...5).each do |i|
             @diceRoll = rand(1..4)
-            $gold = $gold + @diceRoll
+            @@gold = @@gold + @diceRoll
         end
-        $gold = $gold * 10
+        @@gold = @@gold * 10
     end
     
     def rangers                             #7
         @armorType = rand(0..2)
         if @armorType == 0
-            $armorClass = "Light Armor"
+            @@armorClass = "Light Armor"
         elsif @armorType == 1
-            $armorClass = "Medium Armor"
+            @@armorClass = "Medium Armor"
         end
         
         (0...5).each do |i|
             @diceRoll = rand(1..4)
-            $gold = $gold + @diceRoll
+            @@gold = @@gold + @diceRoll
         end
-        $gold = $gold * 10
+        @@gold = @@gold * 10
     end
     
     def rogues                              #8
-        $armorClass = "Light Armor"
+        @@armorClass = "Light Armor"
         
         (0...4).each do |i|
             @diceRoll = rand(1..4)
-            $gold = $gold + @diceRoll
+            @@gold = @@gold + @diceRoll
         end
-        $gold = $gold * 10
+        @@gold = @@gold * 10
     end
     
     def sorcerers                           #9
-        $armorClass = "No Armor"
+        @@armorClass = "No Armor"
         
         (0...3).each do |i|
             @diceRoll = rand(1..4)
-            $gold = $gold + @diceRoll
+            @@gold = @@gold + @diceRoll
         end
-        $gold = $gold * 10
+        @@gold = @@gold * 10
     end
     
     def warlocks                            #10
-        $armorClass = "Light Armor"
+        @@armorClass = "Light Armor"
         
         (0...4).each do |i|
             @diceRoll = rand(1..4)
-            $gold = $gold + @diceRoll
+            @@gold = @@gold + @diceRoll
         end
-        $gold = $gold * 10
+        @@gold = @@gold * 10
     end
     
     def wizards                             #11
-        $armorClass = "No Armor"
+        @@armorClass = "No Armor"
         
-        $classes = "Wizard"
+        @@classes = "Wizard"
         (0...4).each do |i|
             @diceRoll = rand(1..4)
-            $gold = $gold + @diceRoll
+            @@gold = @@gold + @diceRoll
         end
-        $gold = $gold * 10
+        @@gold = @@gold * 10
     end
     
     def dwarfs                                          #0
-        $constitution = $constitution + 2
+        @@constitution = @@constitution + 2
     end
     
     def elfs                                            #1
-        $dexterity = $dexterity + 2
+        @@dexterity = @@dexterity + 2
     end
     
     def halflings                                       #2
-        $dexterity = $dexterity + 2
+        @@dexterity = @@dexterity + 2
     end
     
     def humans                                          #3
-        $strength = $strength + 1
-        $dexterity = $dexterity + 1
-        $constitution = $constitution + 1
-        $intelligence = $intelligence + 1
-        $wisdom = $wisdom + 1
-        $charisma = $charisma + 1
+        @@strength = @@strength + 1
+        @@dexterity = @@dexterity + 1
+        @@constitution = @@constitution + 1
+        @@intelligence = @@intelligence + 1
+        @@wisdom = @@wisdom + 1
+        @@charisma = @@charisma + 1
     end
 
     def dragonborns                                     #4
-        $strength = $strength + 2
-        $charisma = $charisma + 1
+        @@strength = @@strength + 2
+        @@charisma = @@charisma + 1
     end
     
     def gnomes                                          #5
-        $intelligence = $intelligence + 2
+        @@intelligence = @@intelligence + 2
     end
     
     def halfElfs                                        #6
-        $charisma = $charisma + 2
+        @@charisma = @@charisma + 2
         @bonusStat1 = rand(0...6)
         @bonusStat2 = rand(0...6)
         case @bonusStat1
         when 0
-            $strength = $strength + 1
+            @@strength = @@strength + 1
         when 1
-            $dexterity = $dexterity + 1
+            @@dexterity = @@dexterity + 1
         when 2
-            $constitution = $constitution + 1
+            @@constitution = @@constitution + 1
         when 3
-            $intelligence = $intelligence + 1
+            @@intelligence = @@intelligence + 1
         when 4
-            $wisdom = $wisdom + 1
+            @@wisdom = @@wisdom + 1
         when 5
-            $charisma = $charisma + 1
+            @@charisma = @@charisma + 1
         end
         
         case @bonusStat2
         when 0
-            $strength = $strength + 1
+            @@strength = @@strength + 1
         when 1
-            $dexterity = $dexterity + 1
+            @@dexterity = @@dexterity + 1
         when 2
-            $constitution = $constitution + 1
+            @@constitution = @@constitution + 1
         when 3
-            $intelligence = $intelligence + 1
+            @@intelligence = @@intelligence + 1
         when 4
-            $wisdom = $wisdom + 1
+            @@wisdom = @@wisdom + 1
         when 5
-            $charisma = $charisma + 1
+            @@charisma = @@charisma + 1
         end
     end
     
     def halfOrcs                                        #7
-        $strength = $strength + 2
-        $constitution = $constitution + 1
+        @@strength = @@strength + 2
+        @@constitution = @@constitution + 1
     end
     
     def tieflings                                       #8
-        $charisma = $charisma + 2
-        $intelligence = $intelligence + 1
+        @@charisma = @@charisma + 2
+        @@intelligence = @@intelligence + 1
     end
     
     def classGeneration
         @pickedClass = rand(0...12)
         case @pickedClass
         when 0
-            $classes = "Barbarian"
+            @@classes = "Barbarian"
             self.barbarians
         when 1
-            $classes = "Bard"
+            @@classes = "Bard"
             self.bards
         when 2
-            $classes = "Cleric"
+            @@classes = "Cleric"
             self.clerics
         when 3
-            $classes = "Druid"
+            @@classes = "Druid"
             self.druids
         when 4
-            $classes = "Fighter"
+            @@classes = "Fighter"
             self.fighters
         when 5
-            $classes = "Monk"
+            @@classes = "Monk"
             self.monks
         when 6
-            $classes = "Paladin"
+            @@classes = "Paladin"
             self.paladins
         when 7
-            $classes = "Ranger"
+            @@classes = "Ranger"
             self.rangers
         when 8
-            $classes = "Rogues"
+            @@classes = "Rogues"
             self.rogues
         when 9
-            $classes = "Sorcerer"
+            @@classes = "Sorcerer"
             self.sorcerers
         when 10
-            $classes = "Warlock"
+            @@classes = "Warlock"
             self.warlocks
         when 11
-            $classes = "Wizard"
+            @@classes = "Wizard"
             self.wizards
         end
     end
@@ -358,31 +358,31 @@ public
         @pickedRace = rand(0...9)
         case @pickedRace
         when 0
-            $race = "Dwarf"
+            @@race = "Dwarf"
             self.dwarfs
         when 1
-            $race = "Elf"
+            @@race = "Elf"
             self.elfs
         when 2
-            $race = "Halfling"
+            @@race = "Halfling"
             self.halfElfs
         when 3
-            $race = "Human"
+            @@race = "Human"
             self.humans
         when 4
-            $race = "Dragonborn"
+            @@race = "Dragonborn"
             self.dragonborns
         when 5
-            $race = "Gnomes"
+            @@race = "Gnomes"
             self.gnomes
         when 6
-            $race = "Half-Elf"
+            @@race = "Half-Elf"
             self.halfElfs
         when 7
-            $race = "Half-Orc"
+            @@race = "Half-Orc"
             self.halfOrcs
         when 8
-            $race = "Tiefling"
+            @@race = "Tiefling"
             self.tieflings
         end
     end
