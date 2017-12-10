@@ -1,6 +1,6 @@
-class CreateWhatevers < ActiveRecord::Migration[5.1]
+class CreateCharacters < ActiveRecord::Migration[5.1]
   def change
-    create_table :whatevers do |t|
+    create_table :characters do |t|
       t.string :name
       t.text :background
       t.string :race
