@@ -1,0 +1,11 @@
+<%= form_for :characters, url: characters_path do |f| %>
+<%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+  <%= f.label :background %><br>
+  <%= f.text_area :background, size: "60x12" %><br>
+  <%= f.label :race %><br>
+  <%= f.text_field :race %><br>
+  <%= f.label :class %><br>
+  <%= f.text_field :class %><br>
+  <%= f.submit %>
+<% end %>
