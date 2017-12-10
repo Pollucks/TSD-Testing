@@ -7,7 +7,7 @@ class CharactersController < ApplicationController
     $intelligence = 4       #3
     $wisdom = 5             #4
     $charisma = 0           #5
-    $armorClass = "temp"
+    $armorclass = "temp"
     $gold = 0
     
     def index
@@ -17,7 +17,11 @@ class CharactersController < ApplicationController
     def show
         @character = Character.find(params[:id])
     end
-  
+    
+    def new
+        @character = Character.new
+    end
+    
     def create
         @character = Character.new(character_params)
         $strength = self.characterStats
@@ -29,18 +33,18 @@ class CharactersController < ApplicationController
         self.raceGeneration
         self.classGeneration
         
-        Character.race = $race
-        Character.classes = $classes
-        Character.strength = $strength
-        Character.dexterity = $dexterity
-        Character.constitution = $constitution
-        Character.intelligence = $intelligence
-        Character.wisdom = $wisdom
-        Character.charisma = $charisma
-        Character.armorClass = $armorClass
-        Character.gold = $gold
+        @character.race = $race
+        @character.classes = $classes
+        @character.strength = $strength
+        @character.dexterity = $dexterity
+        @character.constitution = $constitution
+        @character.intelligence = $intelligence
+        @character.wisdom = $wisdom
+        @character.charisma = $charisma
+        @character.armorclass = $armorClass
+        @character.gold = $gold
         
-        if @character.save!
+        if @character.save
             redirect_to @character
         else
             render 'new'
@@ -67,9 +71,8 @@ class CharactersController < ApplicationController
 
         redirect_to characters_path
     end
-end
 
-private
+public
     def characterStats
         @firstRoll = rand(1..6)
         @secondRoll = rand(1..6)
@@ -385,5 +388,6 @@ private
     end
     
     def character_params
-        params.require(:character).permit(:name, :background, :race, :classes, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, :armorClass, :gold)
+        params.require(:characters).permit(:name, :background, :race, :classes, :strength)
     end
+end
