@@ -1,4 +1,9 @@
-<p>                 # stats paragraph
+<p>
+  Your name is... <strong><%= @character.name %></strong>, <br/>
+  and you are a <i><%= @character.race %> <%= @character.classes %></i>. <br/>
+</p>
+
+<p>
   <strong>Stats:</strong> <br/>
   Strength:
   <%= @character.strength %> <br/>
@@ -14,7 +19,7 @@
   <%= @character.charisma %> <br/>
 </p>
 
-<p>                 # equipment paragraph
+<p>
     <strong>Equipment:</strong> <br />
-    You are profecient in <%= @character.armorclass %> and in your pockets you find <%= @character.gold %> GP.<br />
+    You are profecient in <%= @character.armorclass %> usage and in your pockets you find <%= @character.gold %> GP.<br />
 </p>
