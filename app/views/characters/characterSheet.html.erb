@@ -1,0 +1,25 @@
+<title>             # introduction title
+    Your name is... <strong><%= @character.name %></strong> <br/>
+    and you are a <i><%= @character.race %></i>. <br />
+</title>
+
+<p>                 # stats paragraph
+  <strong>Stats:</strong> <br/>
+  Strength:
+  <%= @character.strength %> <br/>
+  Dexterity:
+  <%= @character.dexterity %> <br/>
+  Constitution:
+  <%= @character.constitution %> <br/>
+  Intelligence:
+  <%= @character.intelligence %> <br/>
+  Wisdom:
+  <%= @character.wisdom %> <br/>
+  Charisma:
+  <%= @character.charisma %> <br/>
+</p>
+
+<p>                 # equipment paragraph
+    <strong>Equipment:</strong> <br />
+    You are profecient in <%= @character.armorClass %> and in your pockets you find <%= @character.gold %> GP.<br />
+</p>
