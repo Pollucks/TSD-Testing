@@ -24,6 +24,7 @@ class CharactersController < ApplicationController
     
     def create
         @character = Character.new(character_params)
+        @@armorclass = "God Armor"
         @@strength = self.characterStats
         @@dexterity = self.characterStats
         @@constitution = self.characterStats
@@ -41,7 +42,7 @@ class CharactersController < ApplicationController
         @character.intelligence = @@intelligence
         @character.wisdom = @@wisdom
         @character.charisma = @@charisma
-        @character.armorclass = @@armorClass
+        @character.armorclass = @@armorclass
         @character.gold = @@gold
         
         if @character.save
@@ -87,9 +88,9 @@ public
         @@gold = 0
         @armorType = rand(0..2)
         if @armorType == 0
-            @@armorClass = "Light Armor"
+            @@armorclass = "Light Armor"
         elsif @armorType == 1
-            @@armorClass = "Medium Armor"
+            @@armorclass = "Medium Armor"
         end
         
         (0...2).each do |i|
@@ -101,7 +102,7 @@ public
     
     def bards                               #1
         @@gold = 0
-        @@armorClass = "Light Armor"
+        @@armorclass = "Light Armor"
         
         (0...5).each do |i|
             @diceRoll = rand(1..4)
@@ -114,9 +115,9 @@ public
         @@gold = 0
         @armorType = rand(0..2)
         if @armorType == 0
-            @@armorClass = "Light Armor"
+            @@armorclass = "Light Armor"
         elsif @armorType == 1
-            @@armorClass = "Medium Armor"
+            @@armorclass = "Medium Armor"
         end
         
         (0...5).each do |i|
@@ -130,9 +131,9 @@ public
         @@gold = 0
         @armorType = rand(0..2)
         if @armorType == 0
-            @@armorClass = "Light Armor"
+            @@armorclass = "Light Armor"
         elsif @armorType == 1
-            @@armorClass = "Medium Armor"
+            @@armorclass = "Medium Armor"
         end
         
         (0...2).each do |i|
@@ -146,11 +147,11 @@ public
         @@gold = 0
         @armorType = rand(0..3)
         if @armorType == 0
-            @@armorClass = "Light Armor"
+            @@armorclass = "Light Armor"
         elsif @armorType == 1
-            @@armorClass = "Medium Armor"
+            @@armorclass = "Medium Armor"
         elsif @armorType == 2
-            @@armorClass = "Heavy Armor"
+            @@armorclass = "Heavy Armor"
         end
         
         (0...5).each do |i|
@@ -162,7 +163,7 @@ public
     
     def monks                               #5
         @@gold = 0
-        @@armorClass = "No Armor"
+        @@armorclass = "No Armor"
         
         (0...5).each do |i|
             @diceRoll = rand(1..4)
@@ -174,11 +175,11 @@ public
         @@gold = 0
         @armorType = rand(0..3)
         if @armorType == 0
-            @@armorClass = "Light Armor"
+            @@armorclass = "Light Armor"
         elsif @armorType == 1
-            @@armorClass = "Medium Armor"
+            @@armorclass = "Medium Armor"
         elsif @armorType == 2
-            @@armorClass = "Heavy Armor"
+            @@armorclass = "Heavy Armor"
         end
         
         (0...5).each do |i|
@@ -192,9 +193,9 @@ public
         @@gold = 0
         @armorType = rand(0..2)
         if @armorType == 0
-            @@armorClass = "Light Armor"
+            @@armorclass = "Light Armor"
         elsif @armorType == 1
-            @@armorClass = "Medium Armor"
+            @@armorclass = "Medium Armor"
         end
         
         (0...5).each do |i|
@@ -206,7 +207,7 @@ public
     
     def rogues                              #8
         @@gold = 0
-        @@armorClass = "Light Armor"
+        @@armorclass = "Light Armor"
         
         (0...4).each do |i|
             @diceRoll = rand(1..4)
@@ -217,7 +218,7 @@ public
     
     def sorcerers                           #9
         @@gold = 0
-        @@armorClass = "No Armor"
+        @@armorclass = "No Armor"
         
         (0...3).each do |i|
             @diceRoll = rand(1..4)
@@ -228,7 +229,7 @@ public
     
     def warlocks                            #10
         @@gold = 0
-        @@armorClass = "Light Armor"
+        @@armorclass = "Light Armor"
         
         (0...4).each do |i|
             @diceRoll = rand(1..4)
@@ -239,7 +240,7 @@ public
     
     def wizards                             #11
         @@gold = 0
-        @@armorClass = "No Armor"
+        @@armorclass = "No Armor"
         
         @@classes = "Wizard"
         (0...4).each do |i|
@@ -385,7 +386,7 @@ public
             @@race = "Dragonborn"
             self.dragonborns
         when 5
-            @@race = "Gnomes"
+            @@race = "Gnome"
             self.gnomes
         when 6
             @@race = "Half-Elf"
