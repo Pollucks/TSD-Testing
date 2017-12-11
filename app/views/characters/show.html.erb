@@ -24,4 +24,30 @@
     You are profecient in <%= @character.armorclass %> usage and in your pockets you find <%= @character.gold %> GP.<br />
 </p>
 
+<h2>Player Notes and Discussion</h2>
+<% @character.comments.each do |comment| %>
+  <p>
+    Alias:
+    <%= comment.commenter %>
+  </p>
+  <p>
+    Note:
+    <%= comment.body %>
+  </p>
+<% end %>
+<h2>Got something to say? Submit here!</h2>
+<%= form_for([@character, @character.comments.build]) do |f| %>
+    <p>
+        <%= f.label :alias %><br>
+        <%= f.text_field :commenter %>
+    </p>
+    <p>
+        <%= f.label :note %><br>
+        <%= f.text_area :body %>
+    </p>
+    <p>
+        <%= f.submit %>
+    </p>
+<% end %>
+
 <%= link_to 'Go back!', characters_path %>
