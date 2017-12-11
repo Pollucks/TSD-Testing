@@ -11,6 +11,11 @@
       <td><%= character.name %></td>
       <td><%= character.background %></td>
       <td><%= link_to 'View', character_path(character) %></td>
+      <td><%= link_to 'Edit', edit_character_path(character) %></td>
+      <td><%= link_to 'Terminate',
+                                  character_path(character),
+                                  method: :delete,
+                                  data: { confirm: 'Are you sure you want to remove this character?' } %></td>
     </tr>
   <% end %>
 </table>
