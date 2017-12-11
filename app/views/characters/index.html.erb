@@ -1,13 +1,17 @@
+<h1>Your characters:</h1>
+<%= link_to 'Create a new character?', new_character_path %>
+
 <table>
   <tr>
-    <th>Your Name is |</th>
-    <th>Your Background is |</th>
-    
+    <th>Character</th>
+    <th>Background</th>
   </tr>
   <% @characters.each do |character| %>
     <tr>
       <td><%= character.name %></td>
       <td><%= character.background %></td>
+      <td><%= link_to 'View', character_path(character) %></td>
     </tr>
   <% end %>
 </table>
+
