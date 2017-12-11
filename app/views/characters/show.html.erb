@@ -34,6 +34,11 @@
     Note:
     <%= comment.body %>
   </p>
+  <p>
+    <%= link_to 'Remove Note', [comment.character, comment],
+                method: :delete,
+                data: {confirm: 'Are you sure you want to remove this note?'} %>
+  </p>
 <% end %>
 <h2>Got something to say? Submit here!</h2>
 <%= form_for([@character, @character.comments.build]) do |f| %>
