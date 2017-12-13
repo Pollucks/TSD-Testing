@@ -4,27 +4,38 @@
 </p>
 
 <p>
+    <strong>Background:</strong> <br />
+    Your story is: <%= @character.background %> <br/>
+</p>
+
+<p>
+  <strong>Condition:</strong> <br/>
+  Hit points: ( <%= @character.hitpoints %> )
+</p>
+
+<p>
   <strong>Stats:</strong> <br/>
   Strength:
-  <%= @character.strength %> <br/>
+  <%= @character.strength %> ( <%= @character.strengthmodifier %> )<br/>
   Dexterity:
-  <%= @character.dexterity %> <br/>
+  <%= @character.dexterity %> ( <%= @character.dexteritymodifier %> )<br/>
   Constitution:
-  <%= @character.constitution %> <br/>
+  <%= @character.constitution %> ( <%= @character.constitutionmodifier %> )<br/>
   Intelligence:
-  <%= @character.intelligence %> <br/>
+  <%= @character.intelligence %> ( <%= @character.intelligencemodifier %> )<br/>
   Wisdom:
-  <%= @character.wisdom %> <br/>
+  <%= @character.wisdom %> ( <%= @character.wisdommodifier %> )<br/>
   Charisma:
-  <%= @character.charisma %> <br/>
+  <%= @character.charisma %> ( <%= @character.charismamodifier %> )<br/>
 </p>
 
 <p>
     <strong>Equipment:</strong> <br />
-    You are profecient in <%= @character.armorclass %> usage and in your pockets you find <%= @character.gold %> GP.<br />
+    You are trained in <%= @character.armorclass %> usage and thus, have equipped yourself accordingly. With your <%= @character.armorequipment %> donned and <%= @characterweaponequipment %> in hand, you feel like you can handle anything. Sifting through your pockets you find <%= @character.gold %> GP.<br />
 </p>
 
-<h2>Player Notes and Discussion</h2>
+
+<p><strong>Player Notes and Discussion:</strong><p>
 <% @character.comments.each do |comment| %>
   <p>
     Alias:
@@ -40,7 +51,7 @@
                 data: {confirm: 'Are you sure you want to remove this note?'} %>
   </p>
 <% end %>
-<h2>Got something to say? Submit here!</h2>
+<p><strong>Got something to say? Submit here!</strong><p>
 <%= form_for([@character, @character.comments.build]) do |f| %>
     <p>
         <%= f.label :alias %><br>
