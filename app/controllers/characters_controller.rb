@@ -70,6 +70,8 @@ class CharactersController < ApplicationController
         @character.intelligencemodifier = @@intelligencemodifier
         @character.wisdommodifier = @@wisdommodifier
         @character.charismamodifier = @@charismamodifier
+        @character.armorequipment = @@armorequipment
+        @character.weaponequipment = @@weaponequipment
         
         
         if @character.save
@@ -150,43 +152,50 @@ private
     def lightArmor
         equitmentPiece = rand(0...3)
         lightarmor = ["Padded Armor", "Leather Armor", "Studded Leather Armor"]
-        lightarmor[equitmentPiece]
+        returnValue = lightarmor[equitmentPiece]
+        returnValue
     end
     
     def mediumArmor
         equitmentPiece = rand(0...5)
         mediumarmor = ["Hide Armor", "Chain Shirt", "Scale Mail", "Breastplate", "Half Plate"]
-        mediumarmor[equitmentPiece]
+        returnValue = mediumarmor[equitmentPiece]
+        returnValue
     end
     
     def heavyArmor
         equitmentPiece = rand(0...4)
         heavyarmor = ["Ring Mail", "Chain Mail", "Splint", "Plate"]
-        heavyarmor[equitmentPiece]
+        returnValue = heavyarmor[equitmentPiece]
+        returnValue
     end
     
     def simpleMelee
         weaponPiece = rand(0...11)
         simplemelee = ["Club", "Dagger", "Greatclub", "Handaxe", "Javelin", "Light Hammer", "Mace", "Quarterstaff", "Sickle", "Spear", "Unarmed"]
-        simplemelee[weaponPiece]
+        returnValue = simplemelee[weaponPiece]
+        returnValue
     end
     
     def simpleRange
         weaponPiece = rand(0...4)
         simplerange = ["Light Crossbow", "Darts", "Shortbow", "Sling"]
-        simplerange[weaponPiece]
+        returnValue = simplerange[weaponPiece]
+        returnValue
     end
     
     def martialMelee
         weaponPiece = rand(0...18)
-        martialmelee = ["Battleaxe", "Flail", "Glaive", "Greataxe", "Greatsword", "Halberd", "Lance", "Longsword", "Maul", "Morningstar", "Pike", "Rapier", "Scimitar", "shortsword", "Trident", "War Pick", "Warhammer", "Whip"]
-        martialmelee[weaponPiece]
+        martialmelee = ["Battleaxe", "Flail", "Glaive", "Greataxe", "Greatsword", "Halberd", "Lance", "Longsword", "Maul", "Morningstar", "Pike", "Rapier", "Scimitar", "Shortsword", "Trident", "War Pick", "Warhammer", "Whip"]
+        returnValue = martialmelee[weaponPiece]
+        returnValue
     end
     
     def martialRange
         weaponPiece = rand(0...5)
         martialrange = ["Blowgun", "Hand Crossbow", "Heavy Crossbow", "Longbow", "Net"]
-        martialrange[weaponPiece]
+        returnValue = martialrange[weaponPiece]
+        returnValue
     end
     
     def barbarians                          #0
@@ -206,9 +215,9 @@ private
         elsif @weaponType == 1
             @@weaponequipment = martialMelee
         elsif @weaponType == 2
-            @@weaponequipment == simpleRange
+            @@weaponequipment = simpleRange
         elsif @weaponType == 3
-            @@weaponequipment == martialRange
+            @@weaponequipment = martialRange
         end
         
         (0...2).each do |i|
@@ -233,9 +242,9 @@ private
         elsif @weaponType == 1
             @@weaponequipment = martialMelee
         elsif @weaponType == 2
-            @@weaponequipment == simpleRange
+            @@weaponequipment = simpleRange
         elsif @weaponType == 3
-            @@weaponequipment == martialRange
+            @@weaponequipment = martialRange
         end
             
         (0...5).each do |i|
@@ -264,7 +273,7 @@ private
         if @weaponType == 0
             @@weaponequipment = simpleMelee
         elsif @weaponType == 1
-            @@weaponequipment == simpleRange
+            @@weaponequipment = simpleRange
         end
         
         (0...5).each do |i|
@@ -293,9 +302,9 @@ private
         if @weaponType == 0
             @@weaponequipment = simpleMelee
         elsif @weaponType == 1
-            @@weaponequipment == martialMelee
+            @@weaponequipment = martialMelee
         elsif @weaponType == 2
-            @@weaponequipment == simpleRange
+            @@weaponequipment = simpleRange
         end
         
         (0...2).each do |i|
@@ -329,9 +338,9 @@ private
         elsif @weaponType == 1
             @@weaponequipment = martialMelee
         elsif @weaponType == 2
-            @@weaponequipment == simpleRange
+            @@weaponequipment = simpleRange
         elsif @weaponType == 3
-            @@weaponequipment == martialRange
+            @@weaponequipment = martialRange
         end
         
         (0...5).each do |i|
@@ -352,11 +361,11 @@ private
         
         @weaponType = rand(0...3)
         if @weaponType == 0
-            @@weaponequipment == simpleMelee
+            @@weaponequipment = simpleMelee
         elsif @weaponType == 1
-            @@weaponequipment == martialMelee
-        elsif @weaponequipment == 2
-            @@weaponequipment == simpleRange
+            @@weaponequipment = martialMelee
+        elsif @weaponType == 2
+            @@weaponequipment = simpleRange
         end
             
         (0...5).each do |i|
@@ -389,9 +398,9 @@ private
         elsif @weaponType == 1
             @@weaponequipment = martialMelee
         elsif @weaponType == 2
-            @@weaponequipment == simpleRange
+            @@weaponequipment = simpleRange
         elsif @weaponType == 3
-            @@weaponequipment == martialRange
+            @@weaponequipment = martialRange
         end
             
         (0...5).each do |i|
@@ -422,9 +431,9 @@ private
         elsif @weaponType == 1
             @@weaponequipment = martialMelee
         elsif @weaponType == 2
-            @@weaponequipment == simpleRange
+            @@weaponequipment = simpleRange
         elsif @weaponType == 3
-            @@weaponequipment == martialRange
+            @@weaponequipment = martialRange
         end
         
         (0...5).each do |i|
@@ -449,9 +458,9 @@ private
         elsif @weaponType == 1
             @@weaponequipment = martialMelee
         elsif @weaponType == 2
-            @@weaponequipment == simpleRange
+            @@weaponequipment = simpleRange
         elsif @weaponType == 3
-            @@weaponequipment == martialRange
+            @@weaponequipment = martialRange
         end
         
         (0...4).each do |i|
@@ -474,7 +483,7 @@ private
         if @weaponType == 0
             @@weaponequipment = simpleMelee
         elsif @weaponType == 1
-            @@weaponequipment == simpleRange
+            @@weaponequipment = simpleRange
         end
         
         (0...3).each do |i|
@@ -496,7 +505,7 @@ private
         if @weaponType == 0
             @@weaponequipment = simpleMelee
         elsif @weaponType == 1
-            @@weaponequipment == simpleRange
+            @@weaponequipment = simpleRange
         end
         
         (0...4).each do |i|
@@ -518,7 +527,7 @@ private
         if @weaponType == 0
             @@weaponequipment = simpleMelee
         elsif @weaponType == 1
-            @@weaponequipment == simpleRange
+            @@weaponequipment = simpleRange
         end
         
         @@classes = "Wizard"
