@@ -1,14 +1,4 @@
 class CharactersController < ApplicationController
-    @@hitpoints = 0
-    @@strengthmodifier = 0           #0
-    @@dexteritymodifier = 0          #1
-    @@constitutionmodifier = 0       #2
-    @@intelligencemodifier = 0       #3
-    @@wisdommodifier = 0             #4
-    @@charismamodifier = 0           #5
-    @@armorequipment = "temp"
-    @@weaponequipment = "temp"
-    
     @@race = "temp"
     @@classes = "temp"
     @@strength = 0           #0
@@ -19,6 +9,15 @@ class CharactersController < ApplicationController
     @@charisma = 0           #5
     @@armorclass = "temp"
     @@gold = 0
+    @@hitpoints = 0
+    @@strengthmodifier = 0           #0
+    @@dexteritymodifier = 0          #1
+    @@constitutionmodifier = 0       #2
+    @@intelligencemodifier = 0       #3
+    @@wisdommodifier = 0             #4
+    @@charismamodifier = 0           #5
+    @@armorequipment = "temp"
+    @@weaponequipment = "temp"
     
     def index
         @characters = Character.all
@@ -42,14 +41,12 @@ class CharactersController < ApplicationController
         @@wisdom = characterStats
         @@charisma = characterStats
         raceGeneration
-        
         @@strengthmodifier = characterModifier(@@strength)
         @@dexteritymodifier = characterModifier(@@dexterity)
         @@constitutionmodifier = characterModifier(@@constitution)
         @@intelligencemodifier = characterModifier(@@intelligence)
         @@wisdommodifier = characterModifier(@@wisdom)
         @@charismamodifier = characterModifier(@@charisma)
-        
         classGeneration
         
         @character.race = @@race
@@ -62,7 +59,6 @@ class CharactersController < ApplicationController
         @character.charisma = @@charisma
         @character.armorclass = @@armorclass
         @character.gold = @@gold
-        
         @character.hitpoints = @@hitpoints
         @character.strengthmodifier = @@strengthmodifier
         @character.dexteritymodifier = @@dexteritymodifier
@@ -72,7 +68,6 @@ class CharactersController < ApplicationController
         @character.charismamodifier = @@charismamodifier
         @character.armorequipment = @@armorequipment
         @character.weaponequipment = @@weaponequipment
-        
         
         if @character.save
             redirect_to @character
@@ -693,6 +688,6 @@ private
     end
     
     def character_params
-        params.require(:characters).permit(:name, :background, :race, :classes, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, :armorclass, :gold)
+        params.require(:characters).permit(:name, :background, :race, :classes, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, :armorclass, :gold, :hitpoints, :strengthmodifier, :dexteritymodifier, :constitutionmodifier, :intelligencemodifier, :wisdommodifier, :charismamodifier, :armorequipment, :weaponequipment)
     end
 end
